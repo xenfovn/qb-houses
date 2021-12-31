@@ -222,7 +222,8 @@ RegisterNetEvent('qb-houses:server:buyHouse', function(house)
         pData.Functions.RemoveMoney('bank', HousePrice, "bought-house") -- 21% Extra house costs
         TriggerEvent('qb-bossmenu:server:addAccountMoney', "realestate", (HousePrice / 100) * math.random(18, 25))
         TriggerEvent('qb-log:server:CreateLog', 'house', 'House Purchased:', 'green', '**Address**:\n'..house:upper()..'\n\n**Purchase Price**:\n$'..HousePrice..'\n\n**Purchaser**:\n'..pData.PlayerData.charinfo.firstname..' '..pData.PlayerData.charinfo.lastname)
-    else
+		TriggerClientEvent("MojiaGarages:client:updateGarage", -1) 	-- Update Garages	
+	else
         TriggerClientEvent('QBCore:Notify', source, "You dont have enough money..", "error")
     end
 end)
